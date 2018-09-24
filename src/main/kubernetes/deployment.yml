@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: receiver
+  labels:
+    app: receiver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: receiver
+  template:
+    metadata:
+      labels:
+        app: receiver
+    spec:
+      containers:
+      - name: receiver
+        image: fahadrauf/receiver
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
