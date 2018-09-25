@@ -9,11 +9,11 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 
-@EnableBinding(Sink.class)
+@EnableBinding(HelloWorldChannelDefinitions.class)
 public class Receiver {
     private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
 
-    @StreamListener(Sink.INPUT)
+    @StreamListener("helloWorld")
     public void handle(
             @Payload final String message,
             @Header(KafkaHeaders.OFFSET) final Long offset,
