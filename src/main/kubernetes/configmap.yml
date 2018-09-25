@@ -3,6 +3,11 @@ apiVersion: v1
 metadata:
   name: receiver
 data:
-    application.yaml: |-
-      greeting:
-        message: Hello from yml
+    application.properties: |-
+      spring.cloud.stream.bindings.helloWorld.destination=helloWorld
+      spring.cloud.stream.bindings.helloWorld.group=receiver-helloWorld-consumerGroup
+      spring.cloud.stream.kafka.binder.autoAddPartitions=true
+      spring.cloud.stream.kafka.binder.brokers=broker
+      spring.cloud.stream.kafka.binder.zkNodes=zookeeper
+      spring.cloud.stream.kafka.bindings.helloWorld.consumer.configuration.max.poll.interval.ms=420000
+      spring.cloud.stream.kafka.bindings.helloWorld.consumer.configuration.max.poll.records=100
